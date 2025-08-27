@@ -24,7 +24,12 @@ connectDB();
 const app = express();
 
 // Middleware
-app.use(cors());
+// Middleware
+app.use(cors({
+  origin: ["http://localhost:3000", "https://job-portal-4cwm.onrender.com"], // allow both frontend (local + deployed)
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  credentials: true
+}));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
