@@ -26,7 +26,7 @@ const app = express();
 // Middleware
 // Middleware
 app.use(cors({
-  origin: ["http://localhost:3000", "https://job-portal-4cwm.onrender.com"], // allow both frontend (local + deployed)
+  origin: "http://localhost:3000", // ✅ Correct: Just your local frontend
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   credentials: true
 }));
