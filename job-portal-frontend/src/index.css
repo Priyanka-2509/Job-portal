@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.body{
+    background-color: black;
+}
+
+@layer base {
+  /* Light theme variables (no changes) */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.75rem;
+  }
+
+  /* --- NEW & IMPROVED DARK THEME --- */
+  .dark {
+    /* A softer, dark blue-gray background instead of pure black */
+    --background: 224 71% 4%; /* hsl(224, 71%, 4%) */
+    
+    /* Bright, clear text color */
+    --foreground: 210 40% 98%; /* hsl(210, 40%, 98%) */
+
+    /* Cards are slightly lighter than the background for a layered effect */
+    --card: 224 71% 6%; /* A bit lighter than background */
+    --card-foreground: 210 40% 98%;
+
+    /* Primary colors for buttons and highlights */
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    /* Borders and inputs with better visibility */
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+
+    /* Ring color for focus states */
+    --ring: 212.7 26.8% 83.9%;
+    
+    --radius: 0.75rem;
+  }
+}
