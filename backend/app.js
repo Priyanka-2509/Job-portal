@@ -23,9 +23,10 @@ connectDB();
 // Initialize Express app
 const app = express();
 
+// In your backend's app.js file
 app.use(cors({
-  // This MUST be the final, desired URL of your frontend
-  origin: ["http://localhost:3000", "https://job-portal.onrender.com"],
+  // Add your current, live frontend URL to this list
+  origin: ["http://localhost:3000", "https://job-portal-1-nn19.onrender.com"],
   credentials: true,
 }));
 app.use(express.json());
