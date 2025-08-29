@@ -3,7 +3,7 @@
 import axios from "axios";
 
 // Base URL comes from .env (frontend)
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const API_URL = process.env.REACT_APP_API_URL || "https://job-portal-2w0k.onrender.com/api";
 
 // Create axios instance
 const API = axios.create({
