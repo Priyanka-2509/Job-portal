@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { motion, AnimatePresence } from "motion/react";
 import { Building, Lock, Mail, Eye, EyeOff, Users, Sparkles, ArrowRight, CheckCircle, Star, TrendingUp, Award, Target } from "lucide-react";
+import API from "../../services/api";
 
 // Employer-focused floating particles
 const EmployerFloatingParticles = () => {
@@ -277,7 +278,7 @@ const EmployerLogin = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const res = await axios.post("http://localhost:5000/api/employers/login", formData);
+            const res = await API.post("/employers/login", formData);
             console.log("Login response:", res.data);
 
 

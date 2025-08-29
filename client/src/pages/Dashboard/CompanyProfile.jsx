@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { Building, Globe, MapPin, Image as ImageIcon, Save, CheckCircle } from 'lucide-react';
+import { getEmployerProfile, updateEmployerProfile } from "../../services/api";
 
 // Animated Background
 const AnimatedBackground = () => {
@@ -45,9 +46,7 @@ const CompanyProfile = () => {
         const fetchProfile = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const res = await axios.get("http://localhost:5000/api/employers/profile", {
-                    headers: { Authorization: `Bearer ${token}` }
-                });
+                const res = await getEmployerProfile(token);
                 setProfile(res.data);
             } catch (err) {
                 console.error("Error fetching profile:", err);
@@ -63,9 +62,7 @@ const CompanyProfile = () => {
     const handleSave = async () => {
         try {
             const token = localStorage.getItem("token");
-            await axios.put("http://localhost:5000/api/employers/profile", profile, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
+            await updateEmployerProfile(token, profile);
             setSuccess(true);
             setTimeout(() => setSuccess(false), 3000);
         } catch (err) {

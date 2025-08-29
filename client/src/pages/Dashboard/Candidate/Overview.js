@@ -4,6 +4,7 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { motion } from "framer-motion";
 import { Briefcase, CheckSquare, Clock } from "lucide-react";
+import API from "../../../services/api"; 
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -14,7 +15,7 @@ const Overview = () => {
     useEffect(() => {
         const candidateId = localStorage.getItem("candidateId");
         if (candidateId) {
-            axios.get(`/api/candidate/${candidateId}/applications`)
+             API.get(`/candidate/${candidateId}/applications`) //
                 .then(res => setApplications(res.data))
                 .catch(err => console.error("Error fetching applications:", err));
         }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Briefcase, Building, MapPin, DollarSign, Type, FileText, Send } from 'lucide-react';
+import API from "../../services/api";
 
 // Animated Background
 const AnimatedBackground = () => {
@@ -58,21 +59,20 @@ const PostJobForm = () => {
         const token = localStorage.getItem("token");
 
         try {
-            const res = await fetch("http://localhost:5000/api/jobs/post", {
+            const res = await API.post("/jobs/post", form, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${token}`,
                 },
-                body: JSON.stringify(form),
             });
 
-            const data = await res.json();
-            if (res.ok) {
+           
+            if (res.status === 200 || res.status === 201) {
                 alert("Job posted successfully!");
                 setForm({ company: "", title: "", type: "full-time", location: "", salary: "", description: "" });
             } else {
-                alert(data.error || "Error posting job");
+                alert("Error posting job");
             }
         } catch (error) {
             console.error("Error submitting form:", error);

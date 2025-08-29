@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { getMyJobs } from "../../services/api";
+import { getApplicantsByJob } from "../../services/api";
 import { Briefcase, MapPin, Users, X, FileText, MailCheck } from 'lucide-react';
 
 // Animated Background
@@ -69,8 +70,7 @@ const JobList = () => {
         }
 
         try {
-            const { data } = await axios.get(`http://localhost:5000/api/jobs/${job._id}/applicants`);
-            setApplicants(data);
+            const { data } = await getApplicantsByJob(job._id);
             setSelectedJob(job);
         } catch (err) {
             console.error("Error fetching applicants:", err);

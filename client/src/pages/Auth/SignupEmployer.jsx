@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { User, Mail, Lock, Building, Landmark, Globe, MapPin, Eye, EyeOff, Sparkles, ArrowRight, Users, Award, Target } from 'lucide-react';
-
+import { employerRegister } from "../../services/api";
 // --- UI Components for Employer Theme ---
 
 // New Dark Animated Background with a purple/blue theme
@@ -132,7 +132,7 @@ function EmployerSignup() {
         setMessage('');
         setIsLoading(true);
         try {
-            const res = await axios.post('http://localhost:5000/api/employers/register', formData);
+            const res = await employerRegister(formData);
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("role", (res.data.role || "employer").toLowerCase());
             localStorage.setItem("user", JSON.stringify(res.data.employer || {}));

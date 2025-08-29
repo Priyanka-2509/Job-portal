@@ -4,6 +4,7 @@ import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, MapPin, DollarSign, Building, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import API from "../services/api";  
 
 // Floating Particles Component
 const FloatingParticles = () => {
@@ -128,12 +129,8 @@ export default function JobDetails() {
         const fetchJob = async () => {
             try {
                 // RESTORED your original fetch call
-                const res = await fetch(`/api/jobs/${id}`);
-                if (!res.ok) {
-                    throw new Error(`HTTP error! status: ${res.status}`);
-                }
-                const data = await res.json();
-                setJob(data);
+                const res = await API.get(`/jobs/${id}`);
+                setJob(res.data);
             } catch (err) {
                 console.error("Failed to fetch job", err);
                 setError("Failed to load job details. Please try again later.");
@@ -163,7 +160,7 @@ export default function JobDetails() {
         data.append('resume', formData.resume);
 
         try {
-            await axios.post('http://localhost:5000/api/apply/', data, {
+            await API.post('/apply', data, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             });
             alert('Your application has been submitted successfully!');

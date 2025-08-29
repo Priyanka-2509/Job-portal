@@ -4,6 +4,7 @@ import { Briefcase, MapPin, Search} from 'lucide-react';
 import axios from 'axios';
 import { motion , useInView } from 'motion/react';
 import Navbar from '../components/Navbar';
+import { getJobs } from "../services/api";  
 
 // Custom cursor component
 const CustomCursor = () => {
@@ -305,7 +306,7 @@ export default function BrowseJobs() {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/jobs');
+                const res = await getJobs();
                 setJobs(res.data);
             } catch (error) {
                 console.error('Failed to load jobs:', error);
