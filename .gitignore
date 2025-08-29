@@ -2,6 +2,7 @@
 
 # .gitignore
 .env
+client/.env
 
 # dependencies
 /node_modules
