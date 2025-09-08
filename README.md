@@ -110,21 +110,6 @@ The app will be available at [http://localhost:3000](http://localhost:3000) or v
 
 ---
 
-## 📂 Project Structure
-
-```
-job-portal/
-│── client/          # React frontend
-│   ├── src/
-│   ├── public/
-│── server/          # Node.js backend
-│   ├── models/
-│   ├── routes/
-│   ├── controllers/
-│── README.md
-```
-
----
 
 ## 📌 Roadmap
 
